@@ -1,0 +1,219 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>MauiManualTesting</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>MauiManualTesting</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.mauimanualtesting</ApplicationId>
+		<ApplicationIdGuid>7b0eef23-c90f-42c0-b2f0-511c0fd09d10</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\cocogoose.otf" />
+	  <None Remove="Resources\Fonts\MaterialIcons-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Mesa-Grande.ttf" />
+	  <None Remove="Resources\Fonts\Metropolis-Black.otf" />
+	  <None Remove="Resources\Fonts\Metropolis-Light.otf" />
+	  <None Remove="Resources\Fonts\Metropolis-Medium.otf" />
+	  <None Remove="Resources\Fonts\Metropolis-Regular.otf" />
+	  <None Remove="Resources\Fonts\Poppins-Light.ttf" />
+	  <None Remove="Resources\Fonts\Poppins-Medium.ttf" />
+	  <None Remove="Resources\Fonts\Poppins-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Poppins-SemiBold.ttf" />
+	  <None Remove="Resources\Fonts\Teko-Bold.ttf" />
+	  <None Remove="Resources\Fonts\Teko-Light.ttf" />
+	  <None Remove="Resources\Fonts\Teko-Medium.ttf" />
+	  <None Remove="Resources\Fonts\Teko-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Teko-SemiBold.ttf" />
+	  <None Remove="Resources\Images\actor_1.png" />
+	  <None Remove="Resources\Images\actor_2.png" />
+	  <None Remove="Resources\Images\actor_3.png" />
+	  <None Remove="Resources\Images\actor_4.png" />
+	  <None Remove="Resources\Images\adidas.png" />
+	  <None Remove="Resources\Images\adidas_logo.png" />
+	  <None Remove="Resources\Images\apple.png" />
+	  <None Remove="Resources\Images\arrow_down_icon.png" />
+	  <None Remove="Resources\Images\arrow_up_icon.png" />
+	  <None Remove="Resources\Images\avatar.jpg" />
+	  <None Remove="Resources\Images\back_icon.png" />
+	  <None Remove="Resources\Images\basket_icon.png" />
+	  <None Remove="Resources\Images\bell_icon.png" />
+	  <None Remove="Resources\Images\birdsfly.png" />
+	  <None Remove="Resources\Images\call.png" />
+	  <None Remove="Resources\Images\check.png" />
+	  <None Remove="Resources\Images\chips.png" />
+	  <None Remove="Resources\Images\close_circle.png" />
+	  <None Remove="Resources\Images\coffee.png" />
+	  <None Remove="Resources\Images\credit_card_icon.png" />
+	  <None Remove="Resources\Images\dollar_icon.png" />
+	  <None Remove="Resources\Images\domino.png" />
+	  <None Remove="Resources\Images\donut.png" />
+	  <None Remove="Resources\Images\dunkindonuts.png" />
+	  <None Remove="Resources\Images\email_icon.png" />
+	  <None Remove="Resources\Images\emoji1.png" />
+	  <None Remove="Resources\Images\emoji10.png" />
+	  <None Remove="Resources\Images\emoji2.png" />
+	  <None Remove="Resources\Images\emoji3.png" />
+	  <None Remove="Resources\Images\emoji4.png" />
+	  <None Remove="Resources\Images\emoji5.png" />
+	  <None Remove="Resources\Images\emoji6.png" />
+	  <None Remove="Resources\Images\emoji7.png" />
+	  <None Remove="Resources\Images\emoji8.png" />
+	  <None Remove="Resources\Images\emoji9.png" />
+	  <None Remove="Resources\Images\face01.png" />
+	  <None Remove="Resources\Images\face02.png" />
+	  <None Remove="Resources\Images\face03.png" />
+	  <None Remove="Resources\Images\face04.png" />
+	  <None Remove="Resources\Images\face05.png" />
+	  <None Remove="Resources\Images\face1.jpg" />
+	  <None Remove="Resources\Images\face2.jpg" />
+	  <None Remove="Resources\Images\face3.jpg" />
+	  <None Remove="Resources\Images\face4.jpg" />
+	  <None Remove="Resources\Images\face5.jpg" />
+	  <None Remove="Resources\Images\ford_v_ferrari.jpg" />
+	  <None Remove="Resources\Images\goby.png" />
+	  <None Remove="Resources\Images\header_background.png" />
+	  <None Remove="Resources\Images\home_icon.png" />
+	  <None Remove="Resources\Images\ic_menu.svg" />
+	  <None Remove="Resources\Images\ic_search.svg" />
+	  <None Remove="Resources\Images\ic_star.svg" />
+	  <None Remove="Resources\Images\ic_star_outline.svg" />
+	  <None Remove="Resources\Images\ic_star_yellow.svg" />
+	  <None Remove="Resources\Images\insideout.jpg" />
+	  <None Remove="Resources\Images\iphone.png" />
+	  <None Remove="Resources\Images\main_face.png" />
+	  <None Remove="Resources\Images\mcdonalds.png" />
+	  <None Remove="Resources\Images\menu_circle.png" />
+	  <None Remove="Resources\Images\menu_icon.png" />
+	  <None Remove="Resources\Images\money_icon.png" />
+	  <None Remove="Resources\Images\nft_art_01.png" />
+	  <None Remove="Resources\Images\nft_art_02.png" />
+	  <None Remove="Resources\Images\nft_art_03.png" />
+	  <None Remove="Resources\Images\nft_art_04.png" />
+	  <None Remove="Resources\Images\nft_art_05.png" />
+	  <None Remove="Resources\Images\nft_art_06.png" />
+	  <None Remove="Resources\Images\nft_art_07.png" />
+	  <None Remove="Resources\Images\nft_art_08.png" />
+	  <None Remove="Resources\Images\nft_art_09.png" />
+	  <None Remove="Resources\Images\nft_art_10.png" />
+	  <None Remove="Resources\Images\nft_art_11.png" />
+	  <None Remove="Resources\Images\nft_art_12.png" />
+	  <None Remove="Resources\Images\nft_art_13.png" />
+	  <None Remove="Resources\Images\nft_art_14.png" />
+	  <None Remove="Resources\Images\nft_art_15.png" />
+	  <None Remove="Resources\Images\nft_art_16.png" />
+	  <None Remove="Resources\Images\nft_art_17.png" />
+	  <None Remove="Resources\Images\nft_art_18.png" />
+	  <None Remove="Resources\Images\outer_circle.png" />
+	  <None Remove="Resources\Images\pizza.png" />
+	  <None Remove="Resources\Images\plus_icon.png" />
+	  <None Remove="Resources\Images\post01.jpg" />
+	  <None Remove="Resources\Images\post02.jpg" />
+	  <None Remove="Resources\Images\post03.jpg" />
+	  <None Remove="Resources\Images\post04.jpg" />
+	  <None Remove="Resources\Images\post05.jpg" />
+	  <None Remove="Resources\Images\post06.jpg" />
+	  <None Remove="Resources\Images\post07.jpg" />
+	  <None Remove="Resources\Images\post08.jpg" />
+	  <None Remove="Resources\Images\poweroff.png" />
+	  <None Remove="Resources\Images\profile_icon.png" />
+	  <None Remove="Resources\Images\ps5.png" />
+	  <None Remove="Resources\Images\record.png" />
+	  <None Remove="Resources\Images\scan_icon.png" />
+	  <None Remove="Resources\Images\search.png" />
+	  <None Remove="Resources\Images\search_icon.png" />
+	  <None Remove="Resources\Images\send.png" />
+	  <None Remove="Resources\Images\send_icon.png" />
+	  <None Remove="Resources\Images\services_icon.png" />
+	  <None Remove="Resources\Images\shoes.png" />
+	  <None Remove="Resources\Images\skate01.png" />
+	  <None Remove="Resources\Images\skate02.png" />
+	  <None Remove="Resources\Images\skate03.png" />
+	  <None Remove="Resources\Images\skate04.png" />
+	  <None Remove="Resources\Images\skate05.png" />
+	  <None Remove="Resources\Images\sony.png" />
+	  <None Remove="Resources\Images\starbucks.png" />
+	  <None Remove="Resources\Images\time.png" />
+	  <None Remove="Resources\Images\toothbrush.png" />
+	  <None Remove="Resources\Images\user01.jpg" />
+	  <None Remove="Resources\Images\user02.jpg" />
+	  <None Remove="Resources\Images\user03.jpg" />
+	  <None Remove="Resources\Images\user04.jpg" />
+	  <None Remove="Resources\Images\user05.jpg" />
+	  <None Remove="Resources\Images\user06.jpg" />
+	  <None Remove="Resources\Images\warning.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0-preview2" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Tests\Coupons\Controls\TabView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Tests\Coupons\Templates\CouponItemTemplate.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Tests\Coupons\Templates\DiscoverItemTemplate.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Tests\MyTasks\Controls\FilterMenu.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Tests\MyTasks\Templates\TaskHeaderTemplate.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Tests\MyTasks\Templates\TaskItemTemplate.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Tests\MyTasks\Templates\TaskItemViewCell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\MainView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+</Project>

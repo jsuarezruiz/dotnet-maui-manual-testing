@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:BasePage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MauiManualTesting.Views.MainView"
+    xmlns:views="clr-namespace:MauiManualTesting.Views.Base"
+    Shell.NavBarIsVisible="False" 
+    x:Name="MainPage"
+    Title="MainView">
+    <views:BasePage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Title" />
+                <Setter Property="FontFamily" Value="Segoe UI Bold" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0, 24, 0, 0" />
+            </Style>
+
+            <Style x:Key="SubTitleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="24, 12" />
+            </Style>
+
+            <Color x:Key="SectionItemBorderColor">#C8C8C8</Color>
+
+            <Style x:Key="SectionItemContainerStyle" TargetType="Border">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=White, Dark=DarkGray}" />
+                <Setter Property="Stroke" Value="{StaticResource SectionItemBorderColor}" />
+                <Setter Property="StrokeThickness" Value="2" />
+                <Setter Property="HeightRequest" Value="120" />
+                <Setter Property="Padding" Value="12" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="FlexLayout.Basis" Value="50%"/>
+                <Setter Property="FlexLayout.Grow" Value="0"/>
+            </Style>
+
+            <Style x:Key="GalleryItemTitleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+                <Setter Property="Margin" Value="0, 0, 0, 6" />
+            </Style>
+
+            <Style x:Key="GalleryItemDescriptionStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+            </Style>
+
+        </ResourceDictionary>
+    </views:BasePage.Resources>
+    <ScrollView>
+        <Grid
+            RowDefinitions="150, *, Auto"
+            RowSpacing="0">
+            <Image
+                Grid.Row="0"
+                Aspect="AspectFill"
+                Source="header_background.png"/>
+            <BoxView 
+                Grid.Row="0"
+                Opacity="0.5"/>
+            <Grid
+                RowSpacing="0"
+                Grid.Row="0"
+                RowDefinitions="Auto,*">
+                <Label
+                    Text=".NET MAUI Manual Testing"
+                    Style="{StaticResource TitleStyle}">
+                </Label>
+                <Label
+                    Grid.Row="1"
+                    Text="Project with various apps to carry out manual testing of .NET MAUI"
+                    Style="{StaticResource SubTitleStyle}"/>
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Margin="12">
+                <CollectionView 
+                    x:Name="HomeSections"
+                    BackgroundColor="Transparent"
+                    ItemsSource="{Binding Items}"
+                    SelectionMode="Single"    
+                    SelectedItem="{Binding SelectedItem, Source={x:RelativeSource AncestorType={x:Type ContentPage}}, Mode=TwoWay}"
+                    SelectionChangedCommand="{Binding NavigateCommand, Source={x:Reference MainPage}}"
+                    Margin="6, 12, 6, 0">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                            Orientation="Vertical"
+                            Span="2"
+                            HorizontalItemSpacing="6"
+                            VerticalItemSpacing="6"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                               Style="{StaticResource SectionItemContainerStyle}">
+                                <Border.StrokeShape>
+                                    <RoundRectangle 
+                                        CornerRadius="0" />
+                                </Border.StrokeShape>
+                                <Grid
+                                   RowSpacing="0"
+                                   RowDefinitions="Auto, *">
+                                    <Label
+                                       Text="{Binding Title}"
+                                       Style="{StaticResource GalleryItemTitleStyle}"/>
+                                    <Label
+                                       Grid.Row="1"
+                                       Text="{Binding Description}"
+                                       Style="{StaticResource GalleryItemDescriptionStyle}"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Grid>
+    </ScrollView>
+</views:BasePage>
